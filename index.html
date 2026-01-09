@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spanish Tutoring with Maria Uribe</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -419,11 +418,137 @@
             color: #64748b;
         }
 
-        .calendly-wrapper {
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
             background-color: white;
-            border-radius: 30px;
+            border-radius: 25px;
+            padding: 45px 35px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: #3b82f6;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .pricing-amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: -2px;
+        }
+
+        .pricing-per {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-btn {
+            display: block;
+            background-color: #1a1a2e;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .pricing-btn:hover {
+            background-color: #3b82f6;
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background-color: #3b82f6;
+        }
+
+        .pricing-card.featured .pricing-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .payment-info {
+            text-align: center;
+            margin-top: 50px;
             padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            background-color: #f1f5f9;
+            border-radius: 15px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .payment-info p {
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .zelle-email {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a2e;
         }
 
         /* Footer */
@@ -529,6 +654,11 @@
 
             .booking-header h2 {
                 font-size: 2.4rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
             }
 
             footer {
@@ -670,10 +800,36 @@
     <section class="booking" id="book">
         <div class="booking-header">
             <h2>Ready to start?</h2>
-            <p>Pick a time that works for you.</p>
+            <p>Choose a plan that works for you.</p>
         </div>
-        <div class="calendly-wrapper">
-            <div class="calendly-inline-widget" data-url="https://calendly.com/spanishtutormaria/spanish-tutoring-with-maria-uribe?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-label">Single Session</div>
+                <div class="pricing-amount">$40</div>
+                <div class="pricing-per">per hour</div>
+                <ul class="pricing-features">
+                    <li>1-on-1 personalized session</li>
+                    <li>Flexible scheduling</li>
+                    <li>Any topic or skill level</li>
+                </ul>
+                <a href="https://calendly.com/spanishtutormaria/spanish-tutoring-with-maria-uribe" class="pricing-btn">Book Now</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Best Value</div>
+                <div class="pricing-label">4-Session Package</div>
+                <div class="pricing-amount">$150</div>
+                <div class="pricing-per">save $10</div>
+                <ul class="pricing-features">
+                    <li>4 hours of tutoring</li>
+                    <li>Consistent weekly progress</li>
+                    <li>Priority scheduling</li>
+                </ul>
+                <a href="https://calendly.com/spanishtutormaria/spanish-tutoring-with-maria-uribe" class="pricing-btn">Book Package</a>
+            </div>
+        </div>
+        <div class="payment-info">
+            <p>After booking, send payment via Zelle to:</p>
+            <p class="zelle-email">marifer.uribest@gmail.com</p>
         </div>
     </section>
 
@@ -685,6 +841,5 @@
         </div>
     </footer>
 
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>
