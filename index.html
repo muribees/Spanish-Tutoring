@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Tutoring with Maria Uribe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f8fbff;
+            color: #1a1a2e;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: rgba(248, 251, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 50px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: #1d4ed8;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 .highlight {
+            color: #3b82f6;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-color: #bfdbfe;
+            z-index: -1;
+        }
+
+        .hero-desc {
+            font-size: 1.3rem;
+            color: #64748b;
+            line-height: 1.7;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #1a1a2e;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2);
+        }
+
+        .hero-cta svg {
+            transition: transform 0.2s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Floating shapes */
+        .shape {
+            position: absolute;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background-color: #dbeafe;
+            top: 15%;
+            right: 10%;
+            transform: rotate(15deg);
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background-color: #bfdbfe;
+            top: 60%;
+            right: 25%;
+            transform: rotate(-10deg);
+        }
+
+        .shape-3 {
+            width: 120px;
+            height: 120px;
+            background-color: #93c5fd;
+            top: 20%;
+            right: 35%;
+            transform: rotate(25deg);
+        }
+
+        /* Stats strip */
+        .stats {
+            background-color: #1a1a2e;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+
+        .stat {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            letter-spacing: -2px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        /* About */
+        .about {
+            padding: 120px 50px;
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .about-visual {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-box {
+            background-color: #3b82f6;
+            border-radius: 30px;
+            padding: 60px;
+            color: white;
+            transform: rotate(-3deg);
+        }
+
+        .about-box h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .credential-float {
+            position: absolute;
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            font-weight: 600;
+            transform: rotate(3deg);
+        }
+
+        .credential-float.top {
+            top: -30px;
+            right: -20px;
+            color: #1d4ed8;
+        }
+
+        .credential-float.bottom {
+            bottom: -30px;
+            left: -20px;
+            color: #1a1a2e;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .credentials-list {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .credential-tag {
+            background-color: #f1f5f9;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            color: #475569;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .credential-tag:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        /* Services */
+        .services {
+            padding: 120px 50px;
+            background-color: #f1f5f9;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .services-header h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 25px;
+            padding: 45px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card:nth-child(2) {
+            transform: translateY(-20px);
+        }
+
+        .service-card:nth-child(2):hover {
+            transform: translateY(-30px);
+        }
+
+        .service-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 10px 0;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Booking */
+        .booking {
+            padding: 120px 50px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .booking-header h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .booking-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .calendly-wrapper {
+            background-color: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 60px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-brand span {
+            color: #60a5fa;
+        }
+
+        .footer-info {
+            color: #94a3b8;
+            text-align: right;
+        }
+
+        .footer-info a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .service-card:nth-child(2) {
+                transform: none;
+            }
+
+            .service-card:nth-child(2):hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .hero {
+                padding: 120px 30px 80px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: -1.5px;
+            }
+
+            .hero-desc {
+                font-size: 1.1rem;
+            }
+
+            .shape-1 {
+                width: 250px;
+                height: 250px;
+                right: -50px;
+            }
+
+            .shape-2, .shape-3 {
+                display: none;
+            }
+
+            .stats {
+                flex-wrap: wrap;
+                gap: 40px;
+                padding: 40px 30px;
+            }
+
+            .about {
+                flex-direction: column;
+                padding: 80px 30px;
+            }
+
+            .about-content h2 {
+                font-size: 2.4rem;
+            }
+
+            .services {
+                padding: 80px 30px;
+            }
+
+            .services-header h2 {
+                font-size: 2.4rem;
+            }
+
+            .booking {
+                padding: 80px 30px;
+            }
+
+            .booking-header h2 {
+                font-size: 2.4rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-info {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">maria<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#book">Book</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">NATIVE SPANISH TUTOR</span>
+            <h1>Let's make Spanish <span class="highlight">click</span> for you.</h1>
+            <p class="hero-desc">Personalized 1-on-1 sessions with a native speaker. No awkward textbook conversations, just real progress.</p>
+            <a href="#book" class="hero-cta">
+                Book your first session
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </section>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">AP Spanish Score</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">Native</div>
+            <div class="stat-label">Spanish Speaker</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">Paly</div>
+            <div class="stat-label">Junior</div>
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <div class="about-visual">
+            <div class="about-box">
+                <h3>Hola! I'm Maria.</h3>
+                <p>I grew up speaking Spanish at home and I get what makes learning a language hard and what makes it finally click.</p>
+            </div>
+            <div class="credential-float top">AP Score: 5</div>
+            <div class="credential-float bottom">Palo Alto High</div>
+        </div>
+        <div class="about-content">
+            <h2>Why learn with me?</h2>
+            <p>I'm not just someone who studied Spanish, I live it. As a native speaker, I can help you understand the nuances, the slang, the rhythm of real conversation that textbooks miss.</p>
+            <p>I've tutored students across multiple subjects and know how to break down complex concepts into something that actually sticks. Whether you're struggling with conjugations or want to nail your AP exam, I've got you.</p>
+            <div class="credentials-list">
+                <span class="credential-tag">Native Speaker</span>
+                <span class="credential-tag">AP Spanish 5</span>
+                <span class="credential-tag">Experienced Tutor</span>
+                <span class="credential-tag">Palo Alto High School</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="services-header">
+            <h2>What we can work on</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-number">01</div>
+                <h3>Conversation Practice</h3>
+                <p>Build real confidence speaking Spanish in everyday situations.</p>
+                <ul class="service-list">
+                    <li>Natural dialogue practice</li>
+                    <li>Pronunciation coaching</li>
+                    <li>Slang and expressions</li>
+                    <li>Cultural context</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-number">02</div>
+                <h3>Class Support</h3>
+                <p>Get ahead in your Spanish class and actually understand the material.</p>
+                <ul class="service-list">
+                    <li>Grammar breakdown</li>
+                    <li>Homework help</li>
+                    <li>Essay writing</li>
+                    <li>Test prep</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-number">03</div>
+                <h3>AP Spanish Prep</h3>
+                <p>Targeted strategies from someone who scored a 5.</p>
+                <ul class="service-list">
+                    <li>Exam strategies</li>
+                    <li>Speaking section tips</li>
+                    <li>Writing practice</li>
+                    <li>Timed drills</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking" id="book">
+        <div class="booking-header">
+            <h2>Ready to start?</h2>
+            <p>Pick a time that works for you.</p>
+        </div>
+        <div class="calendly-wrapper">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/paloaltodogs/spanish-tutoring-with-maria-uribe?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">maria<span>.</span></div>
+        <div class="footer-info">
+            <p>Palo Alto, CA</p>
+            <p><a href="mailto:paloaltodogs@gmail.com">paloaltodogs@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            Calendly.initInlineWidget({
+                url: 'https://calendly.com/paloaltodogs/spanish-tutoring-with-maria-uribe',
+                parentElement: document.querySelector('.calendly-inline-widget'),
+                prefill: {},
+                utm: {}
+            });
+        });
+    </script>
+</body>
+</html>
